@@ -1,0 +1,55 @@
+<br>
+<div *ngIf=pasajero>
+    
+    <ul>
+        <li>
+          <h3>
+          Passenger Info of {{pasajero.fullname}}
+          </h3>
+          <body>
+            <div>
+              ID: {{pasajero.id}} <br>
+              Name: {{pasajero.fullname}} <br>
+              Checked-In: {{pasajero.checkin}} <br>
+              Check-In Date: {{
+                (pasajero.checkinDate ? (pasajero.checkinDate | date : 'MMMM d, y')
+                : 'Not checked in') | uppercase}} <br>
+            </div>
+            <div *ngIf=!pasajero.nationality >
+              Procedence of this passenger is unknown
+            </div>
+            <div *ngIf=pasajero.nationality >
+                Nationality:  {{pasajero.nationality}}
+                <img [src]= "'assets/flags/'+pasajero.nationality+'.svg'" alt="FLAG" height="40" width="50"/> 
+                <br>
+            </div>
+            <span>
+            <div>
+                <p>
+                Baggage : {{pasajero.baggage || "No baggage"}}
+                </p>
+            </div>
+
+              <div *ngIf=!pasajero.children>
+                This passenger have no children
+              </div>
+            
+              <div *ngIf=pasajero.children>
+                Number of children:  {{pasajero.children?.length || 0}}
+                <br>
+                Children information: 
+                <div *ngFor="let child of pasajero.children; let i=index">
+                  Children number {{i+1}} :<br>
+                    <span style="margin-left:1em">- Name : {{child.name}} </span>
+                    <br>
+                    <span style="margin-left:1em">- Age : {{child.age}} </span>
+                </div>
+              </div>
+            </span>
+          </body>
+        </li>
+    </ul>
+    <button (click)="goBack()">
+        &lsaquo; Go Back <br>
+    </button>
+</div>

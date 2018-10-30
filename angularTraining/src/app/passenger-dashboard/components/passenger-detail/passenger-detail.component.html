@@ -1,0 +1,87 @@
+<div *ngIf="(pasajero.display == true) || (pasajero.display == 'all')" class="card"> 
+<div *ngIf="show == true">
+<ul>
+        <li>
+          
+
+          <div *ngIf=pasajero.nationality >
+              <img [src]= "'assets/flags/'+pasajero.nationality+'.svg'" height="40" width="50"/> 
+          </div>
+          <span  class='status'
+            [ngClass]="{
+              'checkin': pasajero.checkin,
+              'checkout': pasajero.checkin
+            }">
+          </span>
+
+          <div class="passenger-info">
+              <div *ngIf="editting">
+                  <input type="text"
+                    [value]="pasajero.fullname"
+                    (input)="onNameChange(name.value)"
+                    #name
+                    />
+              </div>
+          </div>
+        
+        <span>
+            <div *ngIf="!editting">
+          <h3>
+            {{i}} {{pasajero.fullname}}
+          </h3>
+            </div>
+      
+        <div class="date">
+          <p>
+            Check in done : {{
+              (pasajero.checkinDate ? (pasajero.checkinDate | date : 'MMMM d, y')
+              : 'Not checked in') | uppercase}}
+          </p>
+        </div>
+        <div class="children">
+            <p>
+            Children : {{pasajero.children?.length || 0}}
+            </p>
+        </div>
+        </span>
+
+        <div>
+            <p>
+            Baggage : {{pasajero.baggage || "No baggage"}}
+            </p>
+        </div>
+
+
+        <div class="passenger-detail-actions">
+            <button (click)="toggleEdit()">
+                {{editting ? 'Done' : 'Edit'}}
+            </button>
+            <button (click)="onRemove()">
+                Remove
+            </button>
+            <br>
+
+            <button 
+                *ngIf="!pasajero.checkin"
+                (click)="ckeckPassenger(pasajero,true)">
+                Ckeck-In
+            </button>
+            <button 
+                *ngIf="pasajero.checkin"
+                (click)="ckeckPassenger(pasajero,false)">
+                Ckeck-Out
+            </button>
+            <br>
+            
+            <button (click)="onSelect()">
+                Select
+            </button>
+            <button (click)="onSelect2()">
+                Select in new url
+            </button>
+        </div>
+            
+    </li>
+</ul>
+</div>
+</div>

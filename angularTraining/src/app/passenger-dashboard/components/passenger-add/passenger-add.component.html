@@ -1,0 +1,78 @@
+<br><br>
+
+<button class="button1" (click)="showForm()"> Add Passenger</button>
+<br><br>
+<div class="add" *ngIf="active">
+    <h3>New Passenger Form: </h3> <br>
+    <form  #passengerForm="ngForm">
+    <div>
+        <label class="label" for="name">Name:</label>
+        <input class="field" [(ngModel)]="pasajero.fullname" type="text" id="name" 
+            name="name" #name="ngModel" minlength="3" required/>
+            <div *ngIf="name.errors && (name.dirty || name.touched)" class="alert alert-danger"> 
+                <!-- .dirty = value has been changed , .touched = field has been visited -->
+                <div [hidden]="!name.errors.required">
+                    Name passenger is required !
+                </div>
+                <div [hidden]="!name.errors.minlength">
+                    Name passenger is too small !
+                </div>
+            </div>
+    </div><br>
+
+    <div>
+        <label class="label" for="nationality">Nationality:</label>
+        <input class="field" [(ngModel)]="pasajero.nationality" type="text" id="nationality" name="nationality" />
+    </div><br>
+    
+    <div>
+      <label class="label" for="isCheckin">Check-In : </label>
+      <input class="field" [(ngModel)]="pasajero.checkin" id="isCheckin" type="checkbox" name="ckeckin">
+    </div><br>
+
+    <div *ngIf="pasajero.checkin">
+        <label class="label" for="date">Date of Check-In:</label>
+        <input class="field" [(ngModel)]="pasajero.checkinDate" type="date" id="date" max="2019-12-31" name="ckeckinDate" />
+    </div><br>
+    
+
+    <div>
+        <label class="label" for="children">Children:</label>
+        <select  class="field" (change)="setNumChild(childrens.value)" type="number" 
+                max="5" min="0" id="children" name="children"
+                value="0" #childrens>
+            <option>0</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+        </select>
+    </div><br>
+    
+</form>
+    <div *ngFor="let child of pasajero.children; let i = index;">
+        <label class="field1" for="nameChild">Name:</label>
+        <input [formControlName]='i' class="field" [(ngModel)]="child.name" type="text" id="nameChild" name="nameChild[i]" required/>
+
+        <label class="field1" for="ageChild">Age:</label>
+        <input [formControlName]='i' class="field" [(ngModel)]="child.age" type="number" id="ageChild" max="99" min="1" name="ageChild[i]" required/>
+        <br><br>
+    </div><br>
+
+
+    <div class="button">
+        <button class="button2" type="submit"  [disabled]="!passengerForm.valid"
+                (click)="addPassenger(pasajero)" >
+                <span>Add your passenger</span>
+        </button>
+        <button class="button2" (click)="showForm()" >
+            <span>Close</span>
+        </button>
+    </div><br>
+    <!--
+    <button (click)="goBack()">
+            &lsaquo; Go Back <br>
+        </button>-->
+
+</div>

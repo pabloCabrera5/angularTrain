@@ -1,0 +1,35 @@
+
+<ul>
+    <li *ngFor='let pasajero of passengers; let i = index'>
+      <div *ngIf=pasajero.nationality >
+          <img [src]= "'assets/flags/'+pasajero.nationality+'.svg'" height="40" width="50"/> 
+      </div>
+      <span  class='status'
+        [ngClass]="{
+          'checkin': pasajero.checkin,
+          'checkout': pasajero.checkin
+        }">
+      </span>
+    
+    <span>
+      <h3>
+        {{i}}. {{pasajero.fullname}}
+      </h3>
+  
+    <div class="date">
+      <p>
+        Check in done : {{
+          (pasajero.checkinDate ? (pasajero.checkinDate | date : 'MMMM d, y')
+          : 'Not checked in') | uppercase}}
+      </p>
+    </div>
+    <div class="children">
+      <p>
+      Children : {{pasajero.children?.length || 0}}
+      </p>
+    </div>
+    </span>
+    
+
+  </li>
+</ul>

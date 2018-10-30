@@ -1,0 +1,117 @@
+
+* {margin: 0; padding: 0;}
+
+.status{
+    width: 10px;
+    height: 10px;
+    background: red;
+    display: block;
+    margin: 8px 10px 0 0;
+    float: left;
+    border-radius: 50%;
+    &.checkin{
+        background: greenyellow;
+    }
+}
+
+
+
+
+div {
+ margin: 20px;
+}
+
+ul {
+ list-style-type: none;
+ width: 500px;
+}
+
+h3 {
+ font: bold 20px/1.5 Helvetica, Verdana, sans-serif;
+}
+
+li img {
+ float: left;
+ margin: 0 1px 0 0;
+}
+
+li p {
+ font: 200 12px/1.5 Georgia, Times New Roman, serif;
+}
+
+li {
+ padding: 50px;
+ overflow: none;
+  display:block;
+    width:100%;
+    margin-left: 0px;
+    height:150px;
+    background-color:#03B3CB;
+    border-left:5px solid #222;
+    border-right:5px solid #222;
+    padding-left:5px;
+    padding-top:1px;
+    text-decoration:none;
+    color:rgb(46, 5, 5);
+    margin-bottom: 7px;
+    transition: all .2s ease-in-out;
+}
+
+li:hover {
+ background: #eee;
+ cursor: pointer;
+
+     -moz-transform:rotate(-5deg);
+    -moz-box-shadow:10px 10px 20px #000000;
+    -webkit-transform:rotate(-5deg);
+    -webkit-box-shadow:10px 10px 20px #000000;
+    transform:rotate(-5deg);
+    box-shadow:10px 10px 20px #000000;
+}
+
+/*
+#list8 {  }
+#list8 ul { list-style:none; }
+#list8 ul li { font-family:Georgia,serif,Times; font-size:18px; }
+#list8 ul li a { display:block; width:300px; height:28px; background-color:#333; 
+    border-left:5px solid #222; border-right:5px solid #222; padding-left:10px;
+  text-decoration:none; color:#bfe1f1; }
+#list8 ul li a:hover {  -moz-transform:rotate(-5deg); -moz-box-shadow:10px 10px 20px #000000;
+  -webkit-transform:rotate(-5deg); -webkit-box-shadow:10px 10px 20px #000000;
+  transform:rotate(-5deg); box-shadow:10px 10px 20px #000000; }
+  */
+  /*
+
+  .list-type6{
+    width:410px;
+    margin:0 auto;
+    }
+    .list-type6 ul li {
+    font-size:15px;
+    font-family: 'Raleway', sans-serif;
+    }
+    .list-type6 ul li a {
+    display:block;
+    width:390px;
+    margin-left: -40px;
+    height:24px;
+    background-color:#03B3CB;
+    border-left:5px solid #222;
+    border-right:5px solid #222;
+    padding-left:10px;
+    padding-top:7px;
+    text-decoration:none;
+    color:white;
+    margin-bottom: 7px;
+    transition: all .2s ease-in-out;
+    }
+    .list-type6 ul li a:hover {
+    -moz-transform:rotate(-5deg);
+    -moz-box-shadow:10px 10px 20px #000000;
+    -webkit-transform:rotate(-5deg);
+    -webkit-box-shadow:10px 10px 20px #000000;
+    transform:rotate(-5deg);
+    box-shadow:10px 10px 20px #000000;
+    }
+    */
+

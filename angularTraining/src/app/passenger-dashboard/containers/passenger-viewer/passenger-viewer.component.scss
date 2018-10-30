@@ -1,0 +1,16 @@
+button {
+    padding      : 5px;
+  
+    font         : bold .9em sans-serif;
+    border       : 2px solid #333;
+    border-radius: 5px;
+    background   : lightsalmon;
+  
+    cursor       : pointer;}
+  button:hover{
+  -webkit-transform: rotate(-15.5deg);
+     -moz-transform: rotate(-15.5deg);
+      -ms-transform: rotate(-15.5deg);
+       -o-transform: rotate(-15.5deg);
+          transform: rotate(-15.5deg);
+  }

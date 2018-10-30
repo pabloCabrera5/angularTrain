@@ -1,0 +1,51 @@
+{
+  "passengers": [
+    {
+      "id": 1,
+      "fullname": "CR",
+      "checkin": true,
+      "checkinDate": 1510742000000,
+      "children": [
+        {
+          "name": "junior",
+          "age": 7
+        }
+      ],
+      "nationality": "canada"
+    },
+    {
+      "id": 2,
+      "fullname": "Pepe",
+      "checkin": false
+    },
+    {
+      "id": 3,
+      "fullname": "Pepito",
+      "checkin": true,
+      "checkinDate": 1313742000000,
+      "children": [
+        {
+          "name": "older",
+          "age": 10
+        },
+        {
+          "name": "grillito",
+          "age": 11
+        }
+      ],
+      "nationality": "norway"
+    },
+    {
+      "id": 4,
+      "fullname": "Pepote",
+      "checkin": true,
+      "checkinDate": 1111742000000
+    },
+    {
+      "id": 5,
+      "fullname": "Pepazo",
+      "checkin": false,
+      "nationality": "new-zealand"
+    }
+  ]
+}

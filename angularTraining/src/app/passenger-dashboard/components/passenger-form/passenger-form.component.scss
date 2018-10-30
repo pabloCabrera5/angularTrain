@@ -1,0 +1,30 @@
+
+
+/* for the bottom add passenger */
+.button2 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+.button2 span:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+.button2:hover span {
+    padding-right: 25px;
+} 
+.button2:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+.button2:hover {background-color: #3e8e41}
+.button2:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}

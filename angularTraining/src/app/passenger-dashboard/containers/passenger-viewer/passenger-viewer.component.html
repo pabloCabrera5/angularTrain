@@ -1,0 +1,13 @@
+
+
+<div>
+    <button (click)="goBack()">
+        &lsaquo; Go Back <br>
+    </button>
+    <passenger-form 
+        [detail]="passenger"
+        (update)="onUpdatePassenger($event)"
+        (remove)="onRemove($event)"
+        (add)="handleAdd($event)">
+    </passenger-form>
+</div>

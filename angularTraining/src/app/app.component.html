@@ -1,0 +1,73 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div class="app">
+  <nav class="nav">
+    <!--<a routerLink="/"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}">
+      Home Page
+    </a>
+    <a routerLink="/uyyyy"
+        routerLinkActive="active">
+      404
+    </a>-->
+    <a *ngFor="let item of nav"
+        [routerLink]="item.link"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact:item.exact}">
+      {{item.name}}
+    </a>
+  </nav>
+  <router-outlet> </router-outlet>
+</div>
+
+<!-->
+<div style="text-align:left">
+  <h1>
+    Welcome to :
+  </h1>
+  <h3>
+  Passengers List
+  </h3>
+  <h6>
+    Select the passenger you wanna see 
+  </h6>
+  <button (click)="passengerList(true)" >Checked In</button>
+  <button (click)="passengerList(false)">Not Checked In</button>
+  <button (click)="passengerList()">All</button>
+  <hr>
+  
+  <app-passenger-checked [passengers]="newList" > </app-passenger-checked>
+  <-->
+
+
+  <!-->
+    <ul>
+     <li *ngFor='let pasajero of passengers; let i = index'>
+      <span  class='status'
+      [ngClass]="{
+        'checkin': pasajero.checkin,
+        'checkout': pasajero.checkin
+      }">
+    </span>
+    
+    <span>
+    {{i}}. {{pasajero.fullname}}
+    
+    <div class="date">
+        Check in done : {{
+          (pasajero.checkinDate ? (pasajero.checkinDate | date : 'MMMM d, y')
+          : 'Not checked in') | uppercase}}
+    </div>
+    <div class="children">
+      children : {{pasajero.children?.length || 0}}
+    </div>
+    </span>
+   
+    </li>
+  </ul>
+  
+
+</div>
+
+ <-->

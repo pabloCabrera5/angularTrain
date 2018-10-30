@@ -1,0 +1,9 @@
+<passenger-add
+    [active]="active"
+    (isActive)="active = $event"
+    (back)="goBack($event)"
+    (add)="handleAdd($event)">
+</passenger-add>
+<button (click)="goBack()">
+        &lsaquo; Go Back <br>
+</button>

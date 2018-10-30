@@ -1,0 +1,136 @@
+
+
+<form (ngSubmit)="handleSubmit(form.value, form.valid)" #form="ngForm" novalidate>
+    <!--<div>
+        {{ detail | json }}<br><br>
+    </div>-->
+    <div>
+        Passenger Name: {{detail?.fullname}}
+        <input type="text"
+                name="fullname"
+                #fullname="ngModel"
+                required
+                [ngModel]="detail?.fullname"/><br>
+                <small *ngIf="fullname.errors?.required && fullname.dirty" >
+                    Passenger name is required!
+                </small>
+    </div><br>
+    <div>
+        Passenger ID: {{detail?.id}}
+        <input type="number"
+                name="id"
+                #id="ngModel"
+                required
+                [ngModel]="detail?.id"/><br>
+                <small *ngIf="id.errors?.required && id.dirty" >
+                    Passenger id is required!
+                </small>
+    </div><br>
+    <div *ngIf=detail?.nationality >
+
+        Nationality:  {{detail.nationality}}
+        <img [src]= "'assets/flags/'+detail.nationality+'.svg'" alt="FLAG" height="40" width="50"/> 
+        <input type="text"
+                name="nationality"
+                #nationality="ngModel"
+                [ngModel]="detail?.nationality">
+        <br>
+    </div>
+    <div *ngIf=detail?.children>
+        Number of children:
+        <br>
+        Children information: 
+        <div  *ngFor="let child of detail.children; let i=index; trackBy:itemIdentity">
+            <div [formGroupName]="i">
+            Children number {{i+1}} :<br>
+            <span style="margin-left:1em">- Name : {{child.name}} </span>
+            <input type="text"
+                    [name]="'child[' + i + '].name'"
+                    #childName="ngModel"
+                    required
+                    [ngModel]="child.name">
+            <br>
+            <span style="margin-left:1em">- Age : {{child.age}} </span>
+            <input type="text"
+                    [name]="'child[' + i + '].age'"
+                    #childAge="ngModel"
+                    required
+                    [ngModel]="child.age">
+            </div>
+        </div>
+    </div><br>
+    <!--
+    <div>
+        <label>
+            <input type="radio"
+                    [value]="true"
+                    name="checkin"
+                    [ngModel]="detail?.checkin"
+                    (ngModelChange)="toggleCheckin($event)"/>
+                    Yes
+        </label>
+        <label>
+            <input type="radio"
+                    [value]="false"
+                    name="checkin"
+                    [ngModel]="detail?.checkin"
+                    (ngModelChange)="toggleCheckin($event)"/>
+                    No
+        </label>
+    </div> 
+    -->
+    <div>
+        <label>
+            Checkin:
+            <input type="checkbox"
+                    name="checkin"
+                    [ngModel]="detail?.checkin"
+                    (ngModelChange)="toggleCheckin($event)"/>
+        </label><br>
+        <div *ngIf="form.value.checkin">
+            Checkin date:
+            <input type="number"
+                    name="checkinDate"
+                    #checkinDate="ngModel"
+                    required
+                    [ngModel]="detail?.checkinDate"/>
+                    <small *ngIf="checkinDate.errors?.required && checkinDate.dirty" ><br>
+                        Ckeckin date is required, cos you have checked in!
+                    </small>
+        </div>
+    </div><br>
+    <div>
+        Baggage: 
+        <select name="baggage"
+                [ngModel]="detail?.baggage">
+            <option *ngFor="let bag of baggage"
+                    [value]="bag.key"
+                    [selected]="bag.key === detail?.baggage">
+                {{bag.value}}
+            </option>
+        </select>
+    </div><br><br>
+    
+    <div>Valid: {{form.valid | json }}</div>
+    <!--
+    <div>{{form.value | json }}</div>
+    <div>Invalid: {{form.invalid | json }}</div>
+    -->
+    <button class="button2" type="submit" [disabled]="form.invalid">
+        <span>Update Passenger</span>
+    </button>
+    <button class="button2" type="button" (click)="removePassenger()">
+        <span>Remove Passenger</span>
+    </button>
+    <button class="button2" type="button" (click)="showFormAdd()">
+            <span>Enable Passenger Form</span>
+        </button>
+    <div *ngIf="mostrarAddForm">
+        <passenger-add
+        [active]="active"
+        (isActive)="active = $event"
+        (back)="goBack($event)"
+        (add)="handleAdd($event)">
+        </passenger-add>
+    </div>
+</form>

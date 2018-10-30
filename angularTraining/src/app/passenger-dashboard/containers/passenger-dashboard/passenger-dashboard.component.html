@@ -1,0 +1,68 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+    <h1>
+        Welcome to :
+    </h1>
+    <h3>
+    Passengers List
+    </h3>
+    <h6>
+        Select the list passenger you wanna see -->
+    </h6>
+
+<div>
+    <passenger-count
+        [items]="passengers">
+    </passenger-count>
+    <passenger-actions
+        [passengersList]="passengers"
+        (add)="add($event)"
+        (filter)="filterPassenger($event)">
+    </passenger-actions>
+    <passenger-add
+        [active]="active"
+        (isActive)="active = $event;hide()"
+        (back)="goBack($event)"
+        (add)="handleAdd($event)"
+        >
+    </passenger-add>
+    <passenger-detail
+        *ngFor="let passenger of passengers"
+        [pasajero]="passenger"
+        [show]="mayShow"
+        (remove)="handleRemove($event)"
+        (edit)="handleEdit($event)"
+        (select)="onSelect($event)"
+        (select2)="handleSelect($event)">
+    </passenger-detail>
+
+    <passenger-info
+        [pasajero]="selectedPassenger"
+        (back)="restore()">
+    </passenger-info>
+    
+
+</div>
+
+<br>
+<hr>
+<hr>
+<!--
+<div style="text-align:left">
+    <h1>
+        Welcome to :
+    </h1>
+    <h3>
+    Passengers List
+    </h3>
+    <h6>
+        Select the passenger you wanna see --
+    </h6>
+    <button (click)="passengerList(true)" >Checked In</button>
+    <button (click)="passengerList(false)">Not Checked In</button>
+    <button (click)="passengerList()">All</button>
+    <hr>
+    
+    <app-passenger-checked [passengers]="newList" > </app-passenger-checked>
+</div>
+-->
